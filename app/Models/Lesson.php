@@ -13,9 +13,13 @@ class Lesson extends Model
     public function getVacancyLevelAttribute(): VacancyLevel {
         return new VacancyLevel($this->remainingCount());
     }
-    private function remainingCount(): int {
+    // UserTestクラスからアクセスするから
+    public function remainingCount(): int {
         return $this->capacity - $this->reservations()->count();
     }
+    // private function remainingCount(): int {
+    //     return $this->capacity - $this->reservations()->count();
+    // }
     // private function remainingCount(): int {
     //     return 0;
     // }
